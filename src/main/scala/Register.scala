@@ -2,7 +2,7 @@
 
 sealed abstract class Register(val address: Int = 0x0)
 
-case object NoOp extends Register
+case object NoOp extends Register(address = 0x0)
 
 // Data Registers
 

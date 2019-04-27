@@ -1,23 +1,10 @@
 import org.scalatest._
 
 class MachineTest extends FlatSpec with Matchers {
-  "Machine" should "be able to move value into register" in {
-    val m = new Machine()
-    m.mov(1, 1024)
-    m.register(1) should be (1024)
-  }
-
   "Machine" should "be able to execute MOV" in {
     val m = new Machine()
-    m.execute(Move, 50, 9000)
-    m.register(50) should be (9000)
-  }
-
-  "Machine" should "be able to execute INC directly with address" in {
-    val m = new Machine()
-    m.execute(Move, 1, 10)
-    m.execute(Increment, 1)
-    m.register(1) should be (11)
+    m.execute(Move, AX, 9000)
+    m.register(AX.address) should be (9000)
   }
 
   "Machine" should "be able to execute INC" in {
