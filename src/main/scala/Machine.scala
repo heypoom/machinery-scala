@@ -3,12 +3,15 @@ import scala.collection.mutable
 class Machine {
   var register: mutable.HashMap[Int, Int] = new mutable.HashMap()
 
+  // MOV EAX, 10
   def execute(instruction: Instruction, register: Register, value: Int): Unit =
     execute(instruction, register.address, value)
 
+  // SUB EBX
   def execute(instruction: Instruction, register: Register): Unit =
     execute(instruction, register.address)
 
+  // XOR EAX, ECX
   def execute(instruction: Instruction, destination: Register, source: Register): Unit =
     execute(instruction, destination.address, source.address)
 
