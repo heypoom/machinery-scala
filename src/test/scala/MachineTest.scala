@@ -36,4 +36,12 @@ class MachineTest extends FlatSpec with Matchers {
     m.execute(XOR, AX, BX)
     m.register(AX) should be (38)
   }
+
+  "Machine" should "be able to multiply two numbers" in {
+    val m = new Machine()
+    m.execute(Move, AX, 20)
+    m.execute(Move, BX, 50)
+    m.execute(Multiply, AX, BX)
+    m.register(AX) should be (50 * 20)
+  }
 }

@@ -42,3 +42,13 @@ case object XOR extends Instruction {
     m.register(dest) = m.register(dest) ^ m.register(source)
   }
 }
+
+case object Multiply extends Instruction {
+  override def compute(dest: Register, source: Register)(implicit m: Machine): Unit = {
+    m.register(AX) = m.register(dest) * m.register(source)
+  }
+
+  override def compute(dest: Register, value: Int)(implicit m: Machine): Unit = {
+    m.register(AX) = m.register(dest) * value
+  }
+}
