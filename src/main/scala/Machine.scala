@@ -1,7 +1,7 @@
 import scala.collection.mutable
 
 class Machine {
-  var register: mutable.HashMap[Int, Int] = new mutable.HashMap()
+  var register: mutable.HashMap[Register, Int] = new mutable.HashMap()
   implicit val machine: Machine = this
 
   def execute(instruction: Instruction, register: Register): Unit =

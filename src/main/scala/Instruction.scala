@@ -6,11 +6,11 @@ sealed trait Instruction {
 
 case object Move extends Instruction {
   override def compute(dest: Register, source: Register)(implicit m: Machine): Unit = {
-    m.register(dest.address) = m.register(source.address)
+    m.register(dest) = m.register(source)
   }
 
   override def compute(dest: Register, value: Int)(implicit m: Machine): Unit = {
-    m.register(dest.address) = value
+    m.register(dest) = value
   }
 }
 
@@ -20,25 +20,25 @@ case object Increment extends Instruction {
   }
 
   override def compute(dest: Register, incrBy: Int)(implicit m: Machine): Unit = {
-    m.register(dest.address) += incrBy
+    m.register(dest) += incrBy
   }
 }
 
 case object Add extends Instruction {
   override def compute(dest: Register, source: Register)(implicit m: Machine): Unit = {
-    m.register(AX.address) = m.register(source.address) + m.register(dest.address)
+    m.register(AX) = m.register(source) + m.register(dest)
   }
 }
 
 case object Subtract extends Instruction {
   override def compute(dest: Register, source: Register)(implicit m: Machine): Unit = {
-    m.register(AX.address) = m.register(source.address) - m.register(dest.address)
+    m.register(AX) = m.register(source) - m.register(dest)
   }
 }
 
 /** Exclusive OR */
 case object XOR extends Instruction {
   override def compute(dest: Register, source: Register)(implicit m: Machine): Unit = {
-    m.register(dest.address) = m.register(dest.address) ^ m.register(source.address)
+    m.register(dest) = m.register(dest) ^ m.register(source)
   }
 }
